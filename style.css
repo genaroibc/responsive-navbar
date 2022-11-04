@@ -1,0 +1,154 @@
+/* *** GENERAL STYLES *** */
+body {
+  background-color: #232323;
+}
+
+/* *** HEADER *** */
+#page-header {
+  position: fixed;
+  z-index: 800;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+  min-height: 50px;
+  padding: 0 2rem;
+
+  display: flex;
+  align-items: center;
+
+  background-color: slateblue;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: bolder;
+}
+
+@media screen and (min-width: 768px) {
+  #page-header {
+    min-height: 80px;
+  }
+
+  #page-header #hamburger-menu.menu-visible {
+    top: unset;
+  }
+
+  #page-header #hamburger-menu-btn {
+    display: none;
+  }
+
+  #page-header #hamburger-menu {
+    position: unset;
+    z-index: unset;
+    width: auto;
+    height: auto;
+
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: inherit;
+
+    font-size: 1.3rem;
+
+    flex-grow: 1;
+    margin-right: 3rem;
+    clip-path: unset;
+  }
+}
+
+/* *** NAVBAR *** */
+#hamburger-menu {
+  position: absolute;
+  left: 0;
+  top: -15vh;
+  z-index: 900;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1.8rem;
+
+  clip-path: circle(0 at 50% 0);
+  transition: clip-path 0.7s ease, top 0.7s ease;
+
+  background-color: slateblue;
+
+  font-size: 1.5rem;
+}
+
+.hamburger-menu-link {
+  padding: 1rem;
+
+  font-size: 1.4rem;
+  text-decoration: none;
+  border-radius: 10px;
+
+  color: #fff;
+
+  transition: background-color 0.4s ease-out, transform 0.2s ease-in;
+}
+
+.hamburger-menu-link:hover {
+  text-decoration: underline;
+  background-color: #0990f0;
+  transform: scale(1.2);
+}
+
+#hamburger-menu.menu-visible {
+  clip-path: circle(100% at 50% 50%);
+  top: 0;
+}
+
+#hamburger-menu-btn {
+  position: absolute;
+  right: 80px;
+  top: 84vh;
+  z-index: 1000;
+
+  width: 4rem;
+  height: 4rem;
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  outline: 0;
+  background: transparent;
+  background-color: #0990f0;
+}
+
+#hamburger-menu-btn .hamburger-stick {
+  width: 100%;
+  height: 3.2px;
+  border-radius: 5px;
+
+  transition: transform 0.5s, opacity 0.5s;
+
+  transform-origin: left;
+
+  background-color: #fff;
+}
+
+#hamburger-menu.menu-visible
+  ~ #hamburger-menu-btn
+  .hamburger-stick:first-child {
+  transform: rotate(34.5deg) scaleX(1.2);
+}
+
+#hamburger-menu.menu-visible
+  ~ #hamburger-menu-btn
+  .hamburger-stick:nth-child(2) {
+  opacity: 0;
+}
+
+#hamburger-menu.menu-visible
+  ~ #hamburger-menu-btn
+  .hamburger-stick:nth-child(3) {
+  transform: rotate(-34.5deg) scaleX(1.2);
+}
